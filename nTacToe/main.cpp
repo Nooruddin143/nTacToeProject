@@ -186,7 +186,7 @@ bool isTie(char board[N][N], int n)
     {
         for (int j = 0; j < 0; ++j)
         {
-            if (board[i][j] != '-')
+            if (board[i][j] == '-')
             {
                 count++;
             }
