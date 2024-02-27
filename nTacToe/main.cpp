@@ -73,7 +73,7 @@ void printBoard(char board[N][N], int n)
         cout << endl;
     }
 }
-bool isColWin(char board[N][N], int n)
+bool isRowWin(char board[N][N], int n)
 {
     int countX;
     int countO;
@@ -92,12 +92,12 @@ bool isColWin(char board[N][N], int n)
             }
         }
         if (countX == n) {
-            cout << "Player (X) won!" << endl;
+            cout << "Player (X) won by connecting the row!" << endl;
             return true;
             break;
         }
         if (countO == n) {
-            cout << "Player (O) won!" << endl;
+            cout << "Player (O) won by connecting the row!" << endl;
             return true;
             break;
         }
@@ -106,7 +106,7 @@ bool isColWin(char board[N][N], int n)
     return  false;
 }
 
-bool isRowWin(char board[N][N], int n)
+bool isColWin(char board[N][N], int n)
 {
     int countX;
     int countO;
@@ -125,12 +125,12 @@ bool isRowWin(char board[N][N], int n)
             }
         }
         if (countX == n) {
-            cout << "Player (X) won!" << endl;
+            cout << "Player (X) won by connecting the column!" << endl;
             return true;
             break;
         }
         if (countO == n) {
-            cout << "Player (O) won!" << endl;
+            cout << "Player (O) won by connecting the column!" << endl;
             return true;
             break;
         }
@@ -141,14 +141,12 @@ bool isRowWin(char board[N][N], int n)
 
 bool isDiagWin(char board[N][N], int n)
 {
+    int countFDO = 0;
+    int countBDX = 0;
+    int countFDX = 0;
+    int countBDO = 0;
     for (int i = 0; i < n; ++i)
     {
-        int countFDO = 0;
-        int countBDX = 0;
-        int countFDX = 0;
-        int countBDO = 0;
-        
-        
         if(board[i][i] == 'X')
         {
             ++countFDX;
@@ -166,12 +164,12 @@ bool isDiagWin(char board[N][N], int n)
         }
         
         if (countFDX == n || countBDX == n) {
-            cout << "Player (X) won!" << endl;
+            cout << "Player (X) won by connecting the diagonal line!" << endl;
             return true;
             break;
         }
         if (countFDO == n || countBDO == n) {
-            cout << "Player (O) won!" << endl;
+            cout << "Player (O) won by connecting the diagonal line!" << endl;
             return true;
             break;
         }
@@ -179,6 +177,7 @@ bool isDiagWin(char board[N][N], int n)
     }
     return false;
 }
+//This feature is not working
 
 bool isTie(char board[N][N], int n)
 {
@@ -187,7 +186,7 @@ bool isTie(char board[N][N], int n)
     {
         for (int j = 0; j < 0; ++j)
         {
-            if (board[i][j] == '-')
+            if (board[i][j] != '-')
             {
                 count++;
             }
